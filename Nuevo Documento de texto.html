@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OECME MOSETEN - Sabores 100% Naturales</title>
+    <style>
+        /* --- Estilos Generales --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* --- Encabezado y Navegación --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: #ffffff;
+            border-bottom: 2px solid #5a7a3b;
+            flex-wrap: wrap; /* Para mejor responsividad */
+        }
+        header .logo {
+            font-size: 1.5em; /* Ajustado para móviles */
+            font-weight: bold;
+            color: #5a7a3b;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        header .logo img {
+            width: 80px; /* Ajustado - Más grande */
+            height: 80px; /* Añadido - Más grande */
+            object-fit: contain; /* Para el logo que no es circular */
+            vertical-align: middle;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap; /* Para mejor responsividad */
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #f39c12;
+        }
+        
+        /* --- Sección Principal (Hero) --- */
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('photo_2025-10-24_11-05-48.jpg'); /* Fondo mantenido */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 5%;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+        }
+        .cta-button {
+            background-color: #f39c12;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #e68a00;
+        }
+
+        /* --- Sección Nosotros (Misión/Visión) --- */
+        .about-section {
+            padding: 60px 0;
+            background-color: #ffffff;
+            text-align: center;
+        }
+        .about-section h2 {
+            font-size: 2.5em;
+            color: #5a7a3b;
+            margin-bottom: 40px;
+        }
+        .about-content {
+            display: flex;
+            justify-content: space-around;
+            gap: 40px;
+            text-align: left;
+            flex-wrap: wrap; /* Para mejor responsividad */
+        }
+        .about-box {
+            flex-basis: 100%; /* Por defecto */
+        }
+        @media (min-width: 768px) {
+            .about-box {
+                flex-basis: 45%; /* En pantallas más grandes */
+            }
+        }
+        .about-box h3 {
+            font-size: 1.8em;
+            color: #f39c12;
+            border-bottom: 3px solid #f39c12;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .about-box p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        /* --- Sección de Productos --- */
+        .product-section {
+            padding: 60px 0;
+            background-color: #f9f9f9; /* Fondo de la sección de productos */
+        }
+        .product-section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #5a7a3b;
+            margin-bottom: 40px;
+        }
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .product-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .product-card-content {
+            padding: 20px;
+        }
+        .product-card h3 {
+            font-size: 1.4em;
+            color: #333;
+            margin-top: 0;
+        }
+        .product-card p {
+            font-size: 0.95em;
+            color: #666;
+            line-height: 1.5;
+        }
+        .product-card .sizes {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 10px;
+        }
+        .product-card .sizes strong {
+            color: #333;
+        }
+
+        /* --- NUEVA SECCIÓN DE RECETAS --- */
+        .recipe-section {
+            padding: 60px 0;
+            background-color: #ffffff; /* Fondo blanco para alternar */
+        }
+        .recipe-section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #5a7a3b;
+            margin-bottom: 40px;
+        }
+        .recipe-container {
+            display: grid;
+            grid-template-columns: 1fr; /* Una columna */
+            gap: 40px;
+            max-width: 900px; /* Ancho máximo para legibilidad */
+            margin: 0 auto; /* Centrar el contenedor */
+        }
+        .recipe-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: 1fr; /* Apilado en móvil */
+        }
+        @media (min-width: 768px) {
+            .recipe-card {
+                grid-template-columns: 40% 1fr; /* Imagen al lado en escritorio */
+            }
+        }
+        .recipe-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        @media (min-width: 768px) {
+            .recipe-card img {
+                height: 100%; /* Rellenar altura de la tarjeta */
+            }
+        }
+        .recipe-content {
+            padding: 30px;
+        }
+        .recipe-content h3 {
+            font-size: 1.8em;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        .recipe-yield {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #777;
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .recipe-content h4 {
+            font-size: 1.3em;
+            color: #f39c12;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        .recipe-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .recipe-content th, .recipe-content td {
+            border-bottom: 1px solid #eee;
+            padding: 10px 8px;
+            text-align: left;
+        }
+        .recipe-content th {
+            background-color: #fcfcfc;
+            font-weight: 600;
+            color: #555;
+        }
+        .recipe-content td:first-child {
+            font-weight: 500;
+        }
+        .recipe-content p {
+            line-height: 1.6;
+            font-size: 1em;
+        }
+        /* --- FIN DE ESTILOS DE RECETAS --- */
+
+        /* --- Sección "Hecho en Bolivia" --- */
+        .bolivia-section {
+            padding: 40px 0;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        .bolivia-section img {
+            width: 150px;
+            margin-bottom: 15px;
+        }
+        .bolivia-section p {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #d32f2f; /* Color rojo de la bandera */
+        }
+
+        /* --- Pie de Página (Footer) --- */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 5%;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; 
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .footer-info, .footer-contact, .footer-social {
+            flex-basis: 100%; /* Por defecto */
+            text-align: center; /* Centrado en móviles */
+        }
+        @media (min-width: 768px) {
+            .footer-info {
+                flex-basis: 30%;
+                text-align: left;
+            }
+            .footer-contact {
+                flex-basis: 30%;
+                text-align: center;
+            }
+            .footer-social {
+                flex-basis: 30%;
+                text-align: right;
+            }
+        }
+        .footer-contact p {
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+        .footer-social .social-icons {
+            display: flex;
+            justify-content: center; /* Centrado en móviles */
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        @media (min-width: 768px) {
+            .footer-social .social-icons {
+                justify-content: flex-end; /* Alineado a la derecha en grandes pantallas */
+            }
+        }
+        .footer-social img {
+            width: 40px;
+            height: 40px;
+            transition: opacity 0.3s;
+        }
+        .footer-social img:hover {
+            opacity: 0.8;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            border-top: 1px solid #555;
+            padding-top: 20px;
+            font-size: 0.9em;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- --- Encabezado --- --><header>
+        <div class="logo">
+            <img src="graficos/LOGO.jpg" alt="Logo OECME Moseten">
+            <span>OECME MOSETEN</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#recetas">Recetas</a></li> <!-- ENLACE AÑADIDO -->
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- --- Sección Principal --- --><section id="inicio" class="hero">
+        <div class="container">
+            <h1>Sabores 100% Naturales</h1>
+            <p>De la comunidad Moseten a tu mesa. Conoce nuestros productos ecológicos.</p>
+            <a href="#productos" class="cta-button">Ver Productos</a>
+        </div>
+    </section>
+
+    <!-- --- Sección Nosotros (Misión y Visión) --- --><section id="nosotros" class="about-section">
+        <div class="container">
+            <h2>Nuestra Organización</h2>
+            <div class="about-content">
+                <div class="about-box">
+                    <h3>Misión</h3>
+                    <p>Promover el desarrollo integral de las mujeres de la comunidad Moseten mediante la agricultura ecológica, la transformación sostenible de productos locales y el fomento del consumo responsable.</p>
+                </div>
+                <div class="about-box">
+                    <h3>Visión</h3>
+                    <p>Ser una organización líder que lucha por las reivindicaciones sociales y culturales de las mujeres Moseten. Buscamos activamente programas, proyectos de desarrollo productivo y financiamiento, tanto público como privado, para mejorar las condiciones de vida de nuestras afiliadas y sus familias, en armonía con el principio de "Vivir Bien".</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Sección de Productos --- --><section id="productos" class="product-section">
+        <div class="container">
+            <h2>Nuestros Productos</h2>
+            <div class="product-gallery">
+                
+                <!-- Producto 1: Harina de Banano --><div class="product-card">
+                    <img src="graficos/HARINA DE BANANO.jpg" alt="Harina de Banano Oecme Moseten">
+                    <div class="product-card-content">
+                        <h3>Harina de Banano</h3>
+                        <p>Harina integral de banano, ideal para repostería y panificación saludable.</p>
+                        <p class="sizes"><strong>Presentaciones:</strong> 250g, 500g, 1Kg</p>
+                    </div>
+                </div>
+
+                <!-- Producto 2: Harina de Yuca --><div class="product-card">
+                    <img src="graficos/HARINA DE YUCA.jpg" alt="Harina de Yuca Oecme Moseten">
+                    <div class="product-card-content">
+                        <h3>Harina de Yuca</h3>
+                        <p>Harina sin gluten, perfecta para diversas preparaciones culinarias y panadería.</p>
+                        <p class="sizes"><strong>Presentaciones:</strong> 250g, 500g, 1Kg</p>
+                    </div>
+                </div>
+
+                <!-- Producto 3: Banano Deshidratado --><div class="product-card">
+                    <img src="graficos/BANANO DESHIDRATADO.jpg" alt="Banano Deshidratado Oecme Moseten">
+                    <div class="product-card-content">
+                        <h3>Banano Deshidratado</h3>
+                        <p>Snack dulce y energético, 100% natural, sin azúcares añadidos.</p>
+                        <p class="sizes"><strong>Presentaciones:</strong> 50g, 100g</p>
+                    </div>
+                </div>
+
+                <!-- Producto 4: Naranja Deshidratada --><div class="product-card">
+                    <img src="graficos/Naranja Deshidratada.jpg" alt="Naranja Deshidratada Oecme Moseten">
+                    <div class="product-card-content">
+                        <h3>Naranja Deshidratada</h3>
+                        <p>Rodajas de naranja con un toque cítrico, ideal para infusiones o como snack.</p>
+                        <p class="sizes"><strong>Presentaciones:</strong> 50g, 100g</p>
+                    </div>
+                </div>
+
+                <!-- Producto 5: Carambola Deshidratada --><div class="product-card">
+                    <img src="graficos/Carambola Deshidratada.jpg" alt="Carambola Deshidratada Oecme Moseten">
+                    <div class="product-card-content">
+                        <h3>Carambola Deshidratada</h3>
+                        <p>Exótica fruta deshidratada, un bocado único y lleno de sabor.</p>
+                        <p class="sizes"><strong>Presentaciones:</strong> 50g, 100g</p>
+                    </div>
+                </div>
+
+                <!-- Producto 6: Mermelada de Hibisco --><div class="product-card">
+                    <img src="graficos/Mermelada de Hibisco.jpg" alt="Mermelada de Hibisco Oecme Moseten">
+                    <div class="product-card-content">
+                        <h3>Mermelada de Hibisco</h3>
+                        <p>Mermelada artesanal con un sabor floral y ligeramente ácido, deliciosa.</p>
+                    </div>
+                </div>
+
+                <!-- Producto 7: Mermelada de Naranja con Papaya --><div class="product-card">
+                    <img src="graficos/Mermelada de Naranja con Papaya.jpg" alt="Mermelada de Naranja con Papaya Oecme Moseten">
+                    <div class="product-card-content">
+                        <h3>Mermelada de Naranja con Papaya</h3>
+                        <p>Combinación tropical de sabores, perfecta para tostadas y postres.</p>
+                    </div>
+                </div>
+
+                <!-- Producto 8: Panes Integrales --><div class="product-card">
+                    <img src="graficos/Panes Integrales.jpg" alt="Panes Integrales Oecme Moseten">
+                    <div class="product-card-content">
+                        <h3>Panes Integrales</h3>
+                        <p>Pan artesanal elaborado con harinas integrales, nutritivo y sabroso.</p>
+                    </div>
+                </div>
+
+                <!-- Producto 9: Galletas Integrales --><div class="product-card">
+                    <img src="graficos/Galletas Integrales.jpg" alt="Galletas Integrales Oecme Moseten">
+                    <div class="product-card-content">
+                        <h3>Galletas Integrales</h3>
+                        <p>Snack saludable y crujiente, ideal para acompañar tu café o té.</p>
+                    </div>
+                </div>
+
+                <!-- Producto 10: Queques Integrales --><div class="product-card">
+                    <img src="graficos/Queques Integrales.jpg" alt="Queques Integrales Oecme Moseten">
+                    <div class="product-card-content">
+                        <h3>Queques Integrales</h3>
+                        <p>Deliciosos queques caseros con ingredientes integrales, para toda la familia.</p>
+                    </div>
+                </div>
+
+                <!-- Producto 11: Jugo de Carambola --><div class="product-card">
+                    <img src="graficos/Jugo de Carambola.jpg" alt="Jugo de Carambola Oecme Moseten">
+                    <div class="product-card-content">
+                        <h3>Jugo de Carambola</h3>
+                        <p>Refrescante jugo natural de carambola, un sabor exótico y revitalizante.</p>
+                    </div>
+                </div>
+
+                <!-- Producto 12: Jugo de Naranja --><div class="product-card">
+                    <img src="graficos/Jugo de Naranja.jpg" alt="Jugo de Naranja Oecme Moseten">
+                    <div class="product-card-content">
+                        <h3>Jugo de Naranja</h3>
+                        <p>Clásico jugo de naranja 100% natural, lleno de vitaminas y frescura.</p>
+                    </div>
+                </div>
+
+                <!-- Producto 13: Api de Banano --><div class="product-card">
+                    <img src="graficos/Api de Banano.jpg" alt="Api de Banano Oecme Moseten">
+                    <div class="product-card-content">
+                        <h3>Api de Banano</h3>
+                        <p>Bebida tradicional andina a base de banano, nutritiva y energizante.</p>
+                        <p class="sizes"><strong>Presentaciones:</strong> 250g, 500g, 1Kg</p>
+                    </div>
+                </div>
+
+                <!-- Producto 14: Refresco de Banano --><div class="product-card">
+                    <img src="graficos/Refresco de Banano.jpg" alt="Refresco de Banano Oecme Moseten">
+                    <div class="product-card-content">
+                        <h3>Refresco de Banano</h3>
+                        <p>Refrescante bebida de banano, ideal para hidratarse en cualquier momento.</p>
+                        <p class="sizes"><strong>Presentaciones:</strong> 250g, 500g, 1Kg</p>
+                    </div>
+                </div>
+
+                <!-- Producto 15: Pito de Banano --><div class="product-card">
+                    <img src="graficos/Pito de Banano.jpg" alt="Pito de Banano Oecme Moseten">
+                    <div class="product-card-content">
+                        <h3>Pito de Banano</h3>
+                        <p>Alimento en polvo de banano, versátil para batidos, postres o como complemento nutricional.</p>
+                        <p class="sizes"><strong>Presentaciones:</strong> 250g, 500g, 1Kg</p>
+                    </div>
+                </div>
+
+                <!-- Última tarjeta de productos, general (se mantiene para la exhibición) --><div class="product-card">
+                    <img src="555437602_122139067256818813_2287233060913899724_n.jpg" alt="Productos Oecme Moseten en exhibición"> 
+                    <div class="product-card-content">
+                        <h3>Calidad y Tradición</h3>
+                        <p>Todos nuestros productos son el resultado del trabajo y la dedicación de las mujeres emprendedoras de la comunidad Moseten.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section> <!-- Fin de Productos -->
+
+    <!-- --- NUEVA SECCIÓN DE RECETAS --- -->
+    <section id="recetas" class="recipe-section">
+        <div class="container">
+            <h2>Recetas con Nuestros Productos</h2>
+            <div class="recipe-container">
+
+                <!-- Receta 1: Chila Milck -->
+                <div class="recipe-card">
+                    <img src="graficos/RECETA 1.jpg" alt="Chila Milck con Harina de Banano">
+                    <div class="recipe-content">
+                        <h3>CHILA MILCK</h3>
+                        <span class="recipe-yield">(harina de banano-platano)</span>
+                        
+                        <h4>Ingredientes</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Insumo</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>HARINA DE BANANO-PLATANO</td><td>600 GR</td></tr>
+                                <tr><td>AZUCAR</td><td>800 GR</td></tr>
+                                <tr><td>AGUA</td><td>8 LT</td></tr>
+                                <tr><td>LECHE LIQUIDA</td><td>2 LT</td></tr>
+                                <tr><td>CANELA</td><td>Necesario</td></tr>
+                            </tbody>
+                        </table>
+                        
+                        <h4>Preparación</h4>
+                        <p>Colocar a hervir el agua junto a la canela, disolver la chila (harina de banano-plátano) en agua fría, vertir la chila disuelta al agua hervida, añadir la leche y azúcar al gusto.</p>
+                    </div>
+                </div>
+
+                <!-- Receta 2: Galletas -->
+                <div class="recipe-card">
+                    <img src="graficos/RECETA 2.jpg" alt="Galletas de Harina de Platano">
+                    <div class="recipe-content">
+                        <h3>GALLETAS DE HARINA DE PLATANO</h3>
+                        <span class="recipe-yield">(300 Unidades)</span>
+                        
+                        <h4>Ingredientes</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Insumo</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>HARINA DE PLATANO</td><td>3000 GR</td></tr>
+                                <tr><td>HUEVO</td><td>9 UNIDADES</td></tr>
+                                <tr><td>MANTEQUILLA</td><td>750 GR</td></tr>
+                                <tr><td>AZUCAR</td><td>510 GR</td></tr>
+                                <tr><td>POLVO DE HORNEAR</td><td>40 GR</td></tr>
+                                <tr><td>LECHE LIQUIDA</td><td>½ LT</td></tr>
+                                <tr><td>CHIPS DE CHOCOLATE</td><td>1 LB</td></tr>
+                            </tbody>
+                        </table>
+                        
+                        <h4>Preparación</h4>
+                        <p>En la batidora colocar azucar y mantequilla luego los huevos, una vez mezclados añadir la harina y el polvo de hornear y finalmente la leche según nesecidad, posterior sacar la masa de la batidora extender y añadir los chips de chocolate mezclarlo y realizar moldes pequeños de galletas, hornear por 10-15 min a una temperatura de 150°</p>
+                    </div>
+                </div>
+
+                <!-- Receta 3: Paneton -->
+                <div class="recipe-card">
+                    <img src="graficos/RECETA 3.jpg" alt="Paneton con Harina de Banano">
+                    <div class="recipe-content">
+                        <h3>PANETON CON HARINA DE BANANO</h3>
+                        <span class="recipe-yield">(6 Unidades)</span>
+                        
+                        <h4>Ingredientes</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Insumo</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>HARINA DE BANANO</td><td>3000 GR</td></tr>
+                                <tr><td>LEVADURA</td><td>60 GR</td></tr>
+                                <tr><td>MANTEQUILLA</td><td>600 GR</td></tr>
+                                <tr><td>HUEVOS</td><td>12 UNID</td></tr>
+                                <tr><td>LECHE LIQUIDA</td><td>600 ML</td></tr>
+                                <tr><td>AZUCAR</td><td>675 GR</td></tr>
+                                <tr><td>PASAS</td><td>300 GR</td></tr>
+                                <tr><td>FRUTAS ABRILLANTADAS</td><td>300 GR</td></tr>
+                                <tr><td>SAL</td><td>PISCA</td></tr>
+                                <tr><td>ESENCIA DE PANETON</td><td>2 TAPITAS</td></tr>
+                            </tbody>
+                        </table>
+                        
+                        <h4>Preparación</h4>
+                        <p>Colocar 5 cucharas de harina mezclar con la levadura, 1 cuchara de azúcar, agua tibia lo necesario hasta activar la levadura. Batir la azúcar con la mantequilla hasta que este homogénea luego añadir los huevos y batirlos. Mezclar la harina, huevo, mantequilla, azúcar, levadura activada, leche según la necesidad, amasarlo posterior dejar reposar durante 30-40mint hasta que duplique la masa. Una vez lista la masa añadir las pasas de uva, esencia de paneton, fruta abrillantada. Mezclar homogéneo posterior colocar en los moldes de paneton a 500 gr, dejar madurar la masa en los moldes luego hornear a 150°T por 30-40mint.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- --- Fin de la Sección de Recetas --- -->
+
+    <!-- --- Sección Hecho en Bolivia --- --><section class="bolivia-section">
+        <div class="container">
+            <img src="graficos/HECHO EN BOLIVIA.jpg" alt="Hecho en Bolivia">
+            <p>¡Consume lo nuestro, emplea a los nuestros!</p>
+        </div>
+    </section>
+
+    <!-- --- Pie de Página --- --><footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>OECME MOSETEN</h3>
+                    <p>Organización Económica Comunitaria de<br>Mujeres Emprendedoras Moseten</p>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contacto</h3>
+                    <p><strong>Teléfonos:</strong> 67116871 - 63237091</p>
+                    <p><strong>Dirección:</strong> Palos Blancos, Calle Batallón Colorados. (Barrio Progreso)</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61574564410223#" target="_blank">
+                            <img src="graficos/FACEBOOK.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.tiktok.com/@oecme_moseten25" target="_blank">
+                            <img src="graficos/TIKTOK.png" alt="TikTok">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 OECME MOSETEN. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+
+
